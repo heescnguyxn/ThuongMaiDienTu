@@ -16,10 +16,11 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// Kết nối MongoDB - Sử dụng MongoDB Atlas
-const MONGODB_URI = 'mongodb+srv://longnguyen:yt4R1aroqDSyBoQz@cluster0.6cwjeyr.mongodb.net/?appName=Cluster0';
+// Kết nối MongoDB - Sử dụng biến môi trường
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/onlineshop';
 
 mongoose.connect(MONGODB_URI)
+
     .then(() => console.log('✅ Connected to MongoDB'))
     .catch(err => console.error('❌ MongoDB connection error:', err));
 
